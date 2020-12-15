@@ -40,21 +40,15 @@ const createTimeOutEvent = (arr, dateOut) => {
 };
    
 const hoursWorkedOnDate = (arr, date=0) => {
-  let hours = 0;
-  if(date !==0){
-    for (let i=0; i<arr.timeInEvents.length;i++){
-      if(date === arr.timeInEvents[i].date && date === arr.timeOutEvents[i].date){
-        let outs = arr.timeOutEvents[i].hour 
-        let ins = arr.timeInEvents[i].hour 
-        hours += (outs - ins)/100
-      }
-    }
-  }else {
-    for (let i=0; i<arr.timeInEvents.length;i++){
-      let outs = arr.timeOutEvents[i].hour 
-      let ins = arr.timeInEvents[i].hour 
-      hours += (outs - ins)/100
-    }
+  let inEvent = employee.timeInEvents.find(function(e){
+        return e.date === date
+    })
+
+    let outEvent = employee.timeOutEvents.find(function(e){
+        return e.date === date
+    })
+
+    return (outEvent.hour - inEvent.hour) / 100
   }
   return hours
 }
