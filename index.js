@@ -40,18 +40,18 @@ const createTimeOutEvent = (arr, dateOut) => {
 };
    
 const hoursWorkedOnDate = (arr, date=0) => {
-  let inEvent = employee.timeInEvents.find(function(e){
+  let inEvent = arr.timeInEvents.find(function(e){
         return e.date === date
     })
 
-    let outEvent = employee.timeOutEvents.find(function(e){
+    let outEvent = arr.timeOutEvents.find(function(e){
         return e.date === date
     })
 
     return (outEvent.hour - inEvent.hour) / 100
   }
-  return hours
-}
+
+
 const wagesEarnedOnDate = (arr, date=0) => {
     let hoursWorked = hoursWorkedOnDate(arr, date)
     let wages = arr.payPerHour*hoursWorked
